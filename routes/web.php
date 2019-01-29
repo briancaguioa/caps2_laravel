@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/catalog', "ItemController@showItems");
+
+
+
+Route::middleware('auth')->group(function() {
+	Route::get('/menu/{id}', "ItemController@itemDetails"); 
+	
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
